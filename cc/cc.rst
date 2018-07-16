@@ -1,5 +1,5 @@
-Altertech Python Coding Convention v1.0.0
-=========================================
+Altertech Python Coding Convention v1.0.0 (Internal)
+====================================================
 
 .. contents::
 
