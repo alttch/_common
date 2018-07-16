@@ -273,7 +273,8 @@ Branches
 
 **<version>**  i.e. *1.0.0* - stable branch
 
-**all_other_names** upload whatever you wish
+**all_other_names** upload whatever you wish, separate name words with **__**,
+keep it loweracse.
 
 Commits
 ~~~~~~~
