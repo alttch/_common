@@ -156,7 +156,7 @@ Markup
 Formatting
 ~~~~~~~~~~
 
-For the lists of functions, fields, variables etc:
+For the lists of functions, commands, variables etc:
 
 * **field1** this is field one
 * **field2** this is field two
