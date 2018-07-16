@@ -39,6 +39,11 @@ words:
         wrapping and with_a and reversed_slash and is_allowed:
             return True
 
+Tabs vs spaces
+--------------
+
+No tabs. No. **NO TABS!!!!1**. 1 tab = 4 spaces. That\'s a law.
+
 Single line code, multi line code
 ---------------------------------
 
