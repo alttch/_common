@@ -47,7 +47,7 @@ Single line code, multi line code
 Imports
 -------
 
-one per line
+One per line
 
 .. code-block:: python
 
@@ -139,10 +139,15 @@ Quotes
     and we use double quotes
     """
 
+Versions
+--------
+
+**major.minor.subversion [alpha|beta]** (*1.0.0 beta*)
+
 Documentation
 ------------
 
-Styles
+Markup
 ~~~~~~
 
 * **rst (sphinx)** primary
@@ -175,5 +180,5 @@ Example:
 Max line width
 ~~~~~~~~~~~~~~
 
-**80** symbols, where it is possible.
+**80** symbols, everywhere it is possible.
 
