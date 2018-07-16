@@ -42,7 +42,9 @@ words:
 Tabs vs spaces
 --------------
 
-No tabs. No. **NO TABS!!!!1**. 1 tab = 4 spaces. That\'s a law.
+No tabs. No. **NO TABS!!!!!!!!!!1111**
+
+1 tab = 4 spaces. That\'s a law.
 
 Single line code, multi line code
 ---------------------------------
