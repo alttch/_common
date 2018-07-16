@@ -243,7 +243,7 @@ Markup
 ~~~~~~
 
 * **rst (sphinx)** primary
-* **md** for the simple texts
+* **md** for the simple texts, but keep it rst-compatible
 
 Formatting
 ~~~~~~~~~~
