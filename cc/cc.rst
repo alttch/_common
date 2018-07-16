@@ -234,8 +234,8 @@ Formatting
 
 For the lists of functions, commands, variables etc:
 
-* **field1** this is field one
-* **field2** this is field two
+* **func1** this is field one
+* **func2** this is field two
 
 For the simple lists:
 
@@ -249,9 +249,9 @@ Font styles:
 
 Example:
 
-    "The **variable** contains a values separated with **|** returned by
+    The variable **var1** contains a values separated with **|** returned by
     function **func1** with **param1** set to *False*, i.e.:
-    *func1(param1=False)*"
+    *func1(param1=False)*
 
 Max line width
 ~~~~~~~~~~~~~~
