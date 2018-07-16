@@ -44,7 +44,7 @@ Tabs vs spaces
 
 No tabs. No. **NO TABS!!!!!!!!!!1111**
 
-1 tab = 4 spaces. That\'s a law.
+1 tab = 4 spaces. This\'s a law.
 
 Single line code, multi line code
 ---------------------------------
