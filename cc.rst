@@ -11,7 +11,7 @@ Google. https://github.com/google/styleguide/blob/gh-pages/pyguide.md
 Functions, variables
 --------------------
 
-always lowercase, words separated with **_**: *my_variable*, *my_function*
+always lowercase, words separated with **_**: *my_variable*, *my_function*.
 
 Function params
 ---------------
@@ -24,12 +24,12 @@ Function params
 Classes
 -------
 
-First letters of the words: uppercase, without separation, i.e. **MyClass**
+First letters of the words: uppercase, without separation: *MyClass*
 
 Max line width
 --------------
 
-**80** symbols
+**80** symbols.
 
 Single line code, multi line code
 ---------------------------------
