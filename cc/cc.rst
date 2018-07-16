@@ -139,7 +139,7 @@ Quotes
 ------
 
 * Single quotes (**'**) everywhere: *myvar = 'my value'*
-* Double quotes for the multiline strings
+* Double quotes for the multi line strings
 
 .. code-block:: python
 
