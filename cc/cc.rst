@@ -100,7 +100,7 @@ Allowed **only** for the simple core modules and config parsers
 String formatting
 -----------------
 
-Both old style ((*'s: %s' % s*) and new style (*'s: {}'.format(s)*) allowed,
+Both old style ((*'s: %s' % s*) and new style (*'s: {}'.format(s)*) are allowed,
 new style is preferred.
 
 File names
