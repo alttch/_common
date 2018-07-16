@@ -63,8 +63,8 @@ One per line
     import os
     from time import sleep
 
-Internal methods override
--------------------------
+Overriding internal methods
+---------------------------
 
 Allowed for a simple plugins, addons, macros
 
