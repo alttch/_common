@@ -291,3 +291,5 @@ and clear code or documentation changes:
     a=a-2
     #commit e1d828306b275471e65940bd063d5d472ceb1cf7: fmt
     a = a - 2
+
+Short comments in a stable branches are forbidden.
