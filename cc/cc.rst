@@ -150,7 +150,7 @@ Quotes
 CLI color highlighting
 ----------------------
 
-Using
+Usage
 ~~~~~
 
 Avoid using color functions directly, use wrappers instead:
