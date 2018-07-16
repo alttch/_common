@@ -269,7 +269,8 @@ git
 Branches
 ~~~~~~~~
 
-**master** current working branch - unstable code
+**master** current working branch - unstable code, but at least possible to be
+executed
 
 **<version>**  i.e. *1.0.0* - stable branch
 
