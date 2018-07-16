@@ -270,9 +270,9 @@ git
 Branches
 ~~~~~~~~
 
-**master** current working branch, unstable code
+**master** current working branch - unstable code
 
-**<version>**  i.e. *1.0.0* stable branch
+**<version>**  i.e. *1.0.0* - stable branch
 
 **all_other_names** upload whatever you wish
 
