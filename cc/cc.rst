@@ -1,8 +1,10 @@
-Altertech Python Coding Convention v.1.0.0
-==========================================
+Altertech Python Coding Convention v1.0.0
+=========================================
+
+.. contents::
 
 Code style:
-----------
+-----------
 
 Google. https://github.com/google/styleguide/blob/gh-pages/pyguide.md
 
@@ -29,7 +31,14 @@ First letters of the words: uppercase, without separation: *MyClass*
 Max line width
 --------------
 
-**80** symbols.
+**80** symbols. Wrapping with a reversed slash is allowed after the condition
+words:
+
+.. code-block:: python
+
+    if this and _is and a_very and a_long and condition and then and \
+        wrapping and with_a and reversed_slash and is_allowed:
+            return True
 
 Single line code, multi line code
 ---------------------------------
@@ -142,6 +151,26 @@ Quotes
 CLI color highlighting
 ----------------------
 
+Using
+~~~~~
+
+Avoid using color functions directly, use wrappers instead:
+
+.. code-block:: python
+
+    # this is a bad example
+    def func_bad(self):
+        print(termcolor.colored('my text', color='green'))
+
+    # this one is good
+    def func_good(self):
+        print(self.colored('my text', color='green'))
+
+    def colored(self, text, color=None, on_color=None, attrs=None):
+        return text if self.suppress_colors else \
+            termcolor.colored(text, color=color, on_color=on_color, attrs=attrs)
+
+
 Messages
 ~~~~~~~~
 
@@ -155,7 +184,7 @@ Messages
 
     <div style="padding: 15px; background-color: black">
         <div style="color: #777777; font-weight: bold">DEBUG MESSAGE</div>
-        <div style="color: #EEEEEE">INFO MESSAGE</div>
+        <div style="color: #AAAAAA">INFO MESSAGE</div>
         <div style="color: yellow">WARNING MESSAGE</div>
         <div style="color: red">ERROR MESSAGE</div>
         <div style="color: red; font-weight: bold;">CRITICAL MESSAGE</div>
@@ -167,9 +196,9 @@ Tables
 .. raw:: html
 
     <div style="padding: 15px; background-color: black">
-        <div style="color: blue">this is a header, blue and regular</div>
+        <div style="color: #99CCFF">this is a header, blue and regular</div>
         <div style="color: #777777">---- this is separator, it's grey ----</div>
-        <div style="color: #EEEEEE">TABLE CONTENT</div>
+        <div style="color: #AAAAAA">TABLE CONTENT</div>
     </div>
 
 
@@ -181,10 +210,10 @@ Both JSON and regular output:
 .. raw:: html
 
     <div style="padding: 15px; background-color: black">
-        <span class="color: blue; font-weight: bold">this is blue and bold
+        <span style="color: #99CCFF; font-weight: bold">this is blue and bold
         </span>
-        <span class="color: #EEEEEE"> = </span>
-        <span class="color: yellow">this is yellow and regular</span>
+        <span style="color: #AAAAAA"> = </span>
+        <span style="color: yellow">this is yellow and regular</span>
     </div>
 
 Versions
@@ -193,7 +222,7 @@ Versions
 **major.minor.subversion [alpha|beta]** (*1.0.0 beta*)
 
 Documentation
-------------
+-------------
 
 Markup
 ~~~~~~
@@ -229,4 +258,36 @@ Max line width
 ~~~~~~~~~~~~~~
 
 **80** symbols, everywhere it is possible.
+
+Version control
+---------------
+
+Primary version control
+~~~~~~~~~~~~~~~~~~~~~~~
+
+git
+
+Branches
+~~~~~~~~
+
+**master** current working branch, unstable code
+
+**<version>**  i.e. *1.0.0* stable branch
+
+**all_other_names** upload whatever you wish
+
+Commits
+~~~~~~~
+
+Short comments like *fixes*, *formatting* are allowed, but only for the short
+and clear code or documentation changes.
+
+.. code-block:: python
+
+    #commit bf9aafe901e52c5e0834dab45cecf2550b50934e: initial
+    a=a-'2'
+    #commit ae1aafe901e52c5e0834dab45cecf2550b50934a: fix
+    a=a-2
+    #commit e1d828306b275471e65940bd063d5d472ceb1cf7: fmt
+    a = a - 2
 
