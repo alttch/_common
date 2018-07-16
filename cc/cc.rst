@@ -3,8 +3,8 @@ Altertech Python Coding Convention v1.0.0
 
 .. contents::
 
-Code style:
------------
+Code style
+----------
 
 Google. https://github.com/google/styleguide/blob/gh-pages/pyguide.md
 
