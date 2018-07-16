@@ -213,6 +213,11 @@ Both JSON and regular output:
         </span>
         <span style="color: #AAAAAA"> = </span>
         <span style="color: yellow">this is yellow and regular</span>
+        <span style="color: #99CCFF; font-weight: bold">this is blue and bold
+        </span>
+        <span style="color: #AAAAAA"> = </span>
+        <span style="color: yellow">but the numbers can be blue and regular
+        </span>
     </div>
 
 Versions
