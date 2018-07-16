@@ -72,7 +72,7 @@ One per line
 Overriding internal methods
 ---------------------------
 
-Allowed for a simple plugins, addons, macros
+Allowed for the simple plugins, addons, macros
 
 .. code-block:: python
 
