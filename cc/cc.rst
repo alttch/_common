@@ -261,8 +261,8 @@ Max line width
 Version control
 ---------------
 
-Primary version control
-~~~~~~~~~~~~~~~~~~~~~~~
+Primary VCS
+~~~~~~~~~~~
 
 git
 
