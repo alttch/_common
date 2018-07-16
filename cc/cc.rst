@@ -112,9 +112,9 @@ for modules (*my_module.py*)
 String packing
 --------------
 
-**Dict fields** separated with **,** (*"var1=1,var2=2"*)
-**Lists** separated with **|** (*"1|2|3"* = *[1,2,3]*)
-**Complex arrays** separated with **||** (*"1|2||3|4"* = *[ [1,2], [3,4] ]*)
+* **Dict fields** separated with **,** (*"var1=1,var2=2"*)
+* **Lists** separated with **|** (*"1|2|3"* = *[1,2,3]*)
+* **Complex arrays** separated with **||** (*"1|2||3|4"* = *[ [1,2], [3,4] ]*)
 
 Function comments
 -----------------
