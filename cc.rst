@@ -158,8 +158,8 @@ Formatting
 
 For the lists of functions, fields, variables etc:
 
-* **list field1** this is field one
-* **list field 2** this is field two
+* **field1** this is field one
+* **field2** this is field two
 
 For the simple lists:
 
