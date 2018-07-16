@@ -25,7 +25,7 @@ Function params
 Classes
 -------
 
-First letters of the words: uppercase, without separation: *MyClass*
+First letters of the words - uppercase, without separation: *MyClass*
 
 Max line width
 --------------
