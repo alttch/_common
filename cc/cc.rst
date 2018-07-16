@@ -209,15 +209,19 @@ Both JSON and regular output:
 .. raw:: html
 
     <div style="padding: 15px; background-color: black">
+    <div>
         <span style="color: #99CCFF; font-weight: bold">this is blue and bold
         </span>
         <span style="color: #AAAAAA"> = </span>
         <span style="color: yellow">this is yellow and regular</span>
+    </div>
+    <div>
         <span style="color: #99CCFF; font-weight: bold">this is blue and bold
         </span>
         <span style="color: #AAAAAA"> = </span>
         <span style="color: yellow">but the numbers can be blue and regular
         </span>
+    </div>
     </div>
 
 Versions
