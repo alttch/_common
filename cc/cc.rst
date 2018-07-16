@@ -280,7 +280,7 @@ Commits
 ~~~~~~~
 
 Short comments like *fixes*, *formatting* are allowed, but only for the short
-and clear code or documentation changes.
+and clear code or documentation changes:
 
 .. code-block:: python
 
@@ -290,4 +290,3 @@ and clear code or documentation changes.
     a=a-2
     #commit e1d828306b275471e65940bd063d5d472ceb1cf7: fmt
     a = a - 2
-
