@@ -18,8 +18,7 @@ always lowercase, words separated with **_**: *my_variable*, *my_function*.
 Function params
 ---------------
 
-* **internal functions** as much as possible details
-  (*format_language="python"*)
+* **internal functions** as detailed as possible (*format_language="python"*)
 
 * **API functions** as short as possible (*f="python"*).
 
