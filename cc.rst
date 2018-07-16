@@ -139,6 +139,54 @@ Quotes
     and we use double quotes
     """
 
+CLI color highlighting
+----------------------
+
+Messages
+~~~~~~~~
+
+* **DEBUG** grey and bold
+* **INFO** regular
+* **WARNING** yellow
+* **ERROR** red
+* **CRITICAL** red and bold
+
+.. raw:: html
+
+    <div style="padding: 15px; background-color: black">
+        <div style="color: #777777; font-weight: bold">DEBUG MESSAGE</div>
+        <div style="color: #EEEEEE">INFO MESSAGE</div>
+        <div style="color: yellow">WARNING MESSAGE</div>
+        <div style="color: red">ERROR MESSAGE</div>
+        <div style="color: red; font-weight: bold;">CRITICAL MESSAGE</div>
+    </div>
+
+Tables
+~~~~~~
+
+.. raw:: html
+
+    <div style="padding: 15px; background-color: black">
+        <div style="color: blue">this is a header, blue and regular</div>
+        <div style="color: #777777">---- this is separator, it's grey ----</div>
+        <div style="color: #EEEEEE">TABLE CONTENT</div>
+    </div>
+
+
+Structures
+~~~~~~~~~~
+
+Both JSON and regular output:
+
+.. raw:: html
+
+    <div style="padding: 15px; background-color: black">
+        <span class="color: blue; font-weight: bold">this is blue and bold
+        </span>
+        <span class="color: #EEEEEE"> = </span>
+        <span class="color: yellow">this is yellow and regular</span>
+    </div>
+
 Versions
 --------
 
