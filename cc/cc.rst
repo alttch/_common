@@ -203,7 +203,7 @@ Avoid starting threads directly, simple wrapper is always better:
         def is_active(self):
             return self.__active
 
-     # my worker
+    # my worker
 
     class MyWorker(BackgroundWorker):
 
@@ -214,6 +214,33 @@ Avoid starting threads directly, simple wrapper is always better:
 
     worker = MyWorker()
     worker.start()
+
+
+Initializing dictionary values
+------------------------------
+
+Always use *setdefault*.
+
+Bad example:
+
+.. code-block:: python
+
+    config = {}
+    if 'structure' not in config:
+        config['structure'] = {}
+    if 'items' not in config:
+        config['items'] = []
+    config['structure']['a'] = 2
+    config['items'].append('item1')
+
+
+Good example:
+
+.. code-block:: python
+
+    config = {}
+    config.setdefault('structure', {})['a'] = 1
+    config.setdefault('items', []).append('item1')
 
 CLI color highlighting
 ----------------------
