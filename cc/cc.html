@@ -381,26 +381,27 @@ ul.auto-toc {
 <li><a class="reference internal" href="#string-packing" id="id14">String packing</a></li>
 <li><a class="reference internal" href="#function-comments" id="id15">Function comments</a></li>
 <li><a class="reference internal" href="#quotes" id="id16">Quotes</a></li>
-<li><a class="reference internal" href="#background-workers" id="id17">Background workers</a></li>
-<li><a class="reference internal" href="#initializing-dictionary-values" id="id18">Initializing dictionary values</a></li>
-<li><a class="reference internal" href="#cli-color-highlighting" id="id19">CLI color highlighting</a><ul>
-<li><a class="reference internal" href="#usage" id="id20">Usage</a></li>
-<li><a class="reference internal" href="#messages" id="id21">Messages</a></li>
-<li><a class="reference internal" href="#tables" id="id22">Tables</a></li>
-<li><a class="reference internal" href="#structures" id="id23">Structures</a></li>
+<li><a class="reference internal" href="#simple-conditions" id="id17">Simple conditions</a></li>
+<li><a class="reference internal" href="#background-workers" id="id18">Background workers</a></li>
+<li><a class="reference internal" href="#initializing-dictionary-values" id="id19">Initializing dictionary values</a></li>
+<li><a class="reference internal" href="#cli-color-highlighting" id="id20">CLI color highlighting</a><ul>
+<li><a class="reference internal" href="#usage" id="id21">Usage</a></li>
+<li><a class="reference internal" href="#messages" id="id22">Messages</a></li>
+<li><a class="reference internal" href="#tables" id="id23">Tables</a></li>
+<li><a class="reference internal" href="#structures" id="id24">Structures</a></li>
 </ul>
 </li>
-<li><a class="reference internal" href="#versions" id="id24">Versions</a></li>
-<li><a class="reference internal" href="#documentation" id="id25">Documentation</a><ul>
-<li><a class="reference internal" href="#markup" id="id26">Markup</a></li>
-<li><a class="reference internal" href="#formatting" id="id27">Formatting</a></li>
-<li><a class="reference internal" href="#id1" id="id28">Max line width</a></li>
+<li><a class="reference internal" href="#versions" id="id25">Versions</a></li>
+<li><a class="reference internal" href="#documentation" id="id26">Documentation</a><ul>
+<li><a class="reference internal" href="#markup" id="id27">Markup</a></li>
+<li><a class="reference internal" href="#formatting" id="id28">Formatting</a></li>
+<li><a class="reference internal" href="#id1" id="id29">Max line width</a></li>
 </ul>
 </li>
-<li><a class="reference internal" href="#version-control" id="id29">Version control</a><ul>
-<li><a class="reference internal" href="#primary-vcs" id="id30">Primary VCS</a></li>
-<li><a class="reference internal" href="#branches" id="id31">Branches</a></li>
-<li><a class="reference internal" href="#commits" id="id32">Commits</a></li>
+<li><a class="reference internal" href="#version-control" id="id30">Version control</a><ul>
+<li><a class="reference internal" href="#primary-vcs" id="id31">Primary VCS</a></li>
+<li><a class="reference internal" href="#branches" id="id32">Branches</a></li>
+<li><a class="reference internal" href="#commits" id="id33">Commits</a></li>
 </ul>
 </li>
 </ul>
@@ -551,8 +552,26 @@ and we use double quotes
 &quot;&quot;&quot;</span>
 </pre>
 </div>
+<div class="section" id="simple-conditions">
+<h1><a class="toc-backref" href="#id17">Simple conditions</a></h1>
+<p>Inline code is always better.</p>
+<p>Bad example:</p>
+<pre class="code python literal-block">
+<span class="keyword">if</span> <span class="name">a</span> <span class="operator">==</span> <span class="literal number integer">1</span><span class="punctuation">:</span>
+    <span class="name">b</span> <span class="operator">=</span> <span class="literal string single">'a is 1'</span>
+<span class="keyword">else</span><span class="punctuation">:</span>
+    <span class="name">b</span> <span class="operator">=</span> <span class="literal string single">'a is not 1'</span>
+<span class="keyword">if</span> <span class="name">b</span><span class="punctuation">:</span> <span class="keyword">return</span> <span class="literal string single">'b is set'</span>
+<span class="keyword">else</span><span class="punctuation">:</span> <span class="keyword">return</span> <span class="literal string single">'b is not set'</span>
+</pre>
+<p>Good example:</p>
+<pre class="code python literal-block">
+<span class="name">b</span> <span class="operator">=</span> <span class="literal string single">'a is 1'</span> <span class="keyword">if</span> <span class="name">a</span> <span class="operator">==</span> <span class="literal number integer">1</span> <span class="keyword">else</span> <span class="literal string single">'a is not 1'</span>
+<span class="keyword">return</span> <span class="literal string single">'b is set'</span> <span class="keyword">if</span> <span class="name">b</span> <span class="keyword">else</span> <span class="literal string single">'b is not set'</span>
+</pre>
+</div>
 <div class="section" id="background-workers">
-<h1><a class="toc-backref" href="#id17">Background workers</a></h1>
+<h1><a class="toc-backref" href="#id18">Background workers</a></h1>
 <p>Avoid starting threads directly, simple wrapper is always better:</p>
 <pre class="code python literal-block">
 <span class="comment single"># common wrapper</span>
@@ -595,7 +614,7 @@ and we use double quotes
 </pre>
 </div>
 <div class="section" id="initializing-dictionary-values">
-<h1><a class="toc-backref" href="#id18">Initializing dictionary values</a></h1>
+<h1><a class="toc-backref" href="#id19">Initializing dictionary values</a></h1>
 <p>Always use <em>setdefault</em>.</p>
 <p>Bad example:</p>
 <pre class="code python literal-block">
@@ -615,9 +634,9 @@ and we use double quotes
 </pre>
 </div>
 <div class="section" id="cli-color-highlighting">
-<h1><a class="toc-backref" href="#id19">CLI color highlighting</a></h1>
+<h1><a class="toc-backref" href="#id20">CLI color highlighting</a></h1>
 <div class="section" id="usage">
-<h2><a class="toc-backref" href="#id20">Usage</a></h2>
+<h2><a class="toc-backref" href="#id21">Usage</a></h2>
 <p>Avoid using color functions directly, use wrappers instead:</p>
 <pre class="code python literal-block">
 <span class="comment single"># this is a bad example</span>
@@ -634,7 +653,7 @@ and we use double quotes
 </pre>
 </div>
 <div class="section" id="messages">
-<h2><a class="toc-backref" href="#id21">Messages</a></h2>
+<h2><a class="toc-backref" href="#id22">Messages</a></h2>
 <ul class="simple">
 <li><strong>DEBUG</strong> grey and bold</li>
 <li><strong>INFO</strong> regular</li>
@@ -650,14 +669,14 @@ and we use double quotes
     <div style="color: red; font-weight: bold;">CRITICAL MESSAGE</div>
 </div></div>
 <div class="section" id="tables">
-<h2><a class="toc-backref" href="#id22">Tables</a></h2>
+<h2><a class="toc-backref" href="#id23">Tables</a></h2>
 <div style="padding: 15px; background-color: black">
     <div style="color: #99CCFF">this is a header, blue and regular</div>
     <div style="color: #777777">---- this is separator, it's grey ----</div>
     <div style="color: #AAAAAA">TABLE CONTENT</div>
 </div></div>
 <div class="section" id="structures">
-<h2><a class="toc-backref" href="#id23">Structures</a></h2>
+<h2><a class="toc-backref" href="#id24">Structures</a></h2>
 <p>Both JSON and regular output:</p>
 <div style="padding: 15px; background-color: black">
 <div>
@@ -676,20 +695,20 @@ and we use double quotes
 </div></div>
 </div>
 <div class="section" id="versions">
-<h1><a class="toc-backref" href="#id24">Versions</a></h1>
+<h1><a class="toc-backref" href="#id25">Versions</a></h1>
 <p><strong>major.minor.subversion [alpha|beta]</strong> (<em>1.0.0 beta</em>)</p>
 </div>
 <div class="section" id="documentation">
-<h1><a class="toc-backref" href="#id25">Documentation</a></h1>
+<h1><a class="toc-backref" href="#id26">Documentation</a></h1>
 <div class="section" id="markup">
-<h2><a class="toc-backref" href="#id26">Markup</a></h2>
+<h2><a class="toc-backref" href="#id27">Markup</a></h2>
 <ul class="simple">
 <li><strong>rst (sphinx)</strong> primary</li>
 <li><strong>md</strong> for the simple texts, but keep it rst-compatible</li>
 </ul>
 </div>
 <div class="section" id="formatting">
-<h2><a class="toc-backref" href="#id27">Formatting</a></h2>
+<h2><a class="toc-backref" href="#id28">Formatting</a></h2>
 <p>For the lists of functions, commands, variables etc:</p>
 <ul class="simple">
 <li><strong>func1</strong> this is field one</li>
@@ -712,18 +731,18 @@ function <strong>func1</strong> with <strong>param1</strong> set to <em>False</e
 <em>func1(param1=False)</em></blockquote>
 </div>
 <div class="section" id="id1">
-<h2><a class="toc-backref" href="#id28">Max line width</a></h2>
+<h2><a class="toc-backref" href="#id29">Max line width</a></h2>
 <p><strong>80</strong> symbols, everywhere it is possible.</p>
 </div>
 </div>
 <div class="section" id="version-control">
-<h1><a class="toc-backref" href="#id29">Version control</a></h1>
+<h1><a class="toc-backref" href="#id30">Version control</a></h1>
 <div class="section" id="primary-vcs">
-<h2><a class="toc-backref" href="#id30">Primary VCS</a></h2>
+<h2><a class="toc-backref" href="#id31">Primary VCS</a></h2>
 <p>git</p>
 </div>
 <div class="section" id="branches">
-<h2><a class="toc-backref" href="#id31">Branches</a></h2>
+<h2><a class="toc-backref" href="#id32">Branches</a></h2>
 <p><strong>master</strong> current working branch - unstable code, but at least possible to be
 executed</p>
 <p><strong>&lt;version&gt;</strong>  i.e. <em>1.0.0</em> - stable branch</p>
@@ -731,7 +750,7 @@ executed</p>
 keep it lowercase.</p>
 </div>
 <div class="section" id="commits">
-<h2><a class="toc-backref" href="#id32">Commits</a></h2>
+<h2><a class="toc-backref" href="#id33">Commits</a></h2>
 <p>Short comments like <em>fixes</em>, <em>formatting</em> are allowed, but only for the short
 and clear code or documentation changes:</p>
 <pre class="code python literal-block">

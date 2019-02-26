@@ -170,6 +170,30 @@ Quotes
     and we use double quotes
     """
 
+Simple conditions
+-----------------
+
+Inline code is always better.
+
+Bad example:
+
+.. code-block:: python
+
+    if a == 1:
+        b = 'a is 1'
+    else:
+        b = 'a is not 1'
+    if b: return 'b is set'
+    else: return 'b is not set'
+
+Good example:
+
+.. code-block:: python
+
+    b = 'a is 1' if a == 1 else 'a is not 1'
+    return 'b is set' if b else 'b is not set'
+
+
 Background workers
 ------------------
 
