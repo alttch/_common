@@ -1,4 +1,4 @@
-Altertech Python Coding Convention v1.0.0 (Internal)
+Altertech Python Coding Convention v1.0.1 (Internal)
 ====================================================
 
 .. contents::
@@ -72,7 +72,7 @@ One per line
 Overriding internal methods
 ---------------------------
 
-Allowed for the simple plugins, addons, macros
+Allowed for simple plugins, addons, macros.
 
 .. code-block:: python
 
@@ -86,22 +86,38 @@ Allowed for the simple plugins, addons, macros
     def set():
         values['a'] = 'b'
 
+It's fine to use set() functions in classes, because *self.set is not set*.
+
 Global variables
 ----------------
 
-Allowed **only** for the simple core modules and config parsers
+Allowed **only** for the simple core modules and config parsers (**only** in
+projects started before Jan 2017).
 
 .. code-block:: python
 
     # config.py
 
     timeout = 5
-    url = "http://google.com"
+    url = 'http://google.com'
     
     def load():
-      globals timeout, url
-      timeout = 10
-      url = "http://yahoo.com"
+        globals timeout, url
+        timeout = 10
+        url = 'http://yahoo.com'
+
+We don't consider globals as total evil. But as they're not in trend, it's
+much better to use simple namespaces:
+
+.. code-block:: python
+
+    from types import SimpleNamespace
+
+    config = SimpleNamespace(timeout=5, url='http://google.com')
+
+    def load():
+        config.timeout = 10
+        config.url = 'http://yahoo.com'
 
 String formatting
 -----------------
@@ -153,6 +169,51 @@ Quotes
     this is a very long string
     and we use double quotes
     """
+
+Background workers
+------------------
+
+Avoid starting threads directly, simple wrapper is always better:
+
+.. code-block:: python
+
+    # common wrapper
+
+    class BackgroundWorker:
+
+        def __init__(self, name=None):
+            self.__thread = None
+            self.__active = False
+            self.name = name
+
+        def start(self, *args, **kwargs):
+            if not (self.__active and self.__thread and \
+                    self.__thread.isAlive()):
+                self.__thread = threading.Thread(
+                    target=self.run, name=self.name, args=args, kwargs=kwargs)
+                self.__active = True
+                self.__thread.start()
+
+        def stop(self, wait=True):
+            if self.__active and self.__thread and self.__thread.isAlive():
+                self.__active = False
+                if wait:
+                    self.__thread.join()
+
+        def is_active(self):
+            return self.__active
+
+     # my worker
+
+    class MyWorker(BackgroundWorker):
+
+        def run():
+            while self.is_active():
+                # do a job
+
+
+    worker = MyWorker()
+    worker.start()
 
 CLI color highlighting
 ----------------------

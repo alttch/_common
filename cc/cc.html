@@ -4,7 +4,7 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 <meta name="generator" content="Docutils 0.14: http://docutils.sourceforge.net/" />
-<title>Altertech Python Coding Convention v1.0.0 (Internal)</title>
+<title>Altertech Python Coding Convention v1.0.1 (Internal)</title>
 <style type="text/css">
 
 /*
@@ -360,8 +360,8 @@ ul.auto-toc {
 </style>
 </head>
 <body>
-<div class="document" id="altertech-python-coding-convention-v1-0-0-internal">
-<h1 class="title">Altertech Python Coding Convention v1.0.0 (Internal)</h1>
+<div class="document" id="altertech-python-coding-convention-v1-0-1-internal">
+<h1 class="title">Altertech Python Coding Convention v1.0.1 (Internal)</h1>
 
 <div class="contents topic" id="contents">
 <p class="topic-title first">Contents</p>
@@ -381,24 +381,25 @@ ul.auto-toc {
 <li><a class="reference internal" href="#string-packing" id="id14">String packing</a></li>
 <li><a class="reference internal" href="#function-comments" id="id15">Function comments</a></li>
 <li><a class="reference internal" href="#quotes" id="id16">Quotes</a></li>
-<li><a class="reference internal" href="#cli-color-highlighting" id="id17">CLI color highlighting</a><ul>
-<li><a class="reference internal" href="#usage" id="id18">Usage</a></li>
-<li><a class="reference internal" href="#messages" id="id19">Messages</a></li>
-<li><a class="reference internal" href="#tables" id="id20">Tables</a></li>
-<li><a class="reference internal" href="#structures" id="id21">Structures</a></li>
+<li><a class="reference internal" href="#background-workers" id="id17">Background workers</a></li>
+<li><a class="reference internal" href="#cli-color-highlighting" id="id18">CLI color highlighting</a><ul>
+<li><a class="reference internal" href="#usage" id="id19">Usage</a></li>
+<li><a class="reference internal" href="#messages" id="id20">Messages</a></li>
+<li><a class="reference internal" href="#tables" id="id21">Tables</a></li>
+<li><a class="reference internal" href="#structures" id="id22">Structures</a></li>
 </ul>
 </li>
-<li><a class="reference internal" href="#versions" id="id22">Versions</a></li>
-<li><a class="reference internal" href="#documentation" id="id23">Documentation</a><ul>
-<li><a class="reference internal" href="#markup" id="id24">Markup</a></li>
-<li><a class="reference internal" href="#formatting" id="id25">Formatting</a></li>
-<li><a class="reference internal" href="#id1" id="id26">Max line width</a></li>
+<li><a class="reference internal" href="#versions" id="id23">Versions</a></li>
+<li><a class="reference internal" href="#documentation" id="id24">Documentation</a><ul>
+<li><a class="reference internal" href="#markup" id="id25">Markup</a></li>
+<li><a class="reference internal" href="#formatting" id="id26">Formatting</a></li>
+<li><a class="reference internal" href="#id1" id="id27">Max line width</a></li>
 </ul>
 </li>
-<li><a class="reference internal" href="#version-control" id="id27">Version control</a><ul>
-<li><a class="reference internal" href="#primary-vcs" id="id28">Primary VCS</a></li>
-<li><a class="reference internal" href="#branches" id="id29">Branches</a></li>
-<li><a class="reference internal" href="#commits" id="id30">Commits</a></li>
+<li><a class="reference internal" href="#version-control" id="id28">Version control</a><ul>
+<li><a class="reference internal" href="#primary-vcs" id="id29">Primary VCS</a></li>
+<li><a class="reference internal" href="#branches" id="id30">Branches</a></li>
+<li><a class="reference internal" href="#commits" id="id31">Commits</a></li>
 </ul>
 </li>
 </ul>
@@ -460,7 +461,7 @@ words:</p>
 </div>
 <div class="section" id="overriding-internal-methods">
 <h1><a class="toc-backref" href="#id10">Overriding internal methods</a></h1>
-<p>Allowed for the simple plugins, addons, macros</p>
+<p>Allowed for simple plugins, addons, macros.</p>
 <pre class="code python literal-block">
 <span class="comment single"># mysimpleplugin.py</span>
 <span class="name">values</span> <span class="operator">=</span> <span class="punctuation">{}</span>
@@ -472,20 +473,33 @@ words:</p>
 <span class="keyword">def</span> <span class="name function">set</span><span class="punctuation">():</span>
     <span class="name">values</span><span class="punctuation">[</span><span class="literal string single">'a'</span><span class="punctuation">]</span> <span class="operator">=</span> <span class="literal string single">'b'</span>
 </pre>
+<p>It's fine to use set() functions in classes, because <em>self.set is not set</em>.</p>
 </div>
 <div class="section" id="global-variables">
 <h1><a class="toc-backref" href="#id11">Global variables</a></h1>
-<p>Allowed <strong>only</strong> for the simple core modules and config parsers</p>
+<p>Allowed <strong>only</strong> for the simple core modules and config parsers (<strong>only</strong> in
+projects started before Jan 2017).</p>
 <pre class="code python literal-block">
 <span class="comment single"># config.py</span>
 
 <span class="name">timeout</span> <span class="operator">=</span> <span class="literal number integer">5</span>
-<span class="name">url</span> <span class="operator">=</span> <span class="literal string double">&quot;http://google.com&quot;</span>
+<span class="name">url</span> <span class="operator">=</span> <span class="literal string single">'http://google.com'</span>
 
 <span class="keyword">def</span> <span class="name function">load</span><span class="punctuation">():</span>
-  <span class="name builtin">globals</span> <span class="name">timeout</span><span class="punctuation">,</span> <span class="name">url</span>
-  <span class="name">timeout</span> <span class="operator">=</span> <span class="literal number integer">10</span>
-  <span class="name">url</span> <span class="operator">=</span> <span class="literal string double">&quot;http://yahoo.com&quot;</span>
+    <span class="name builtin">globals</span> <span class="name">timeout</span><span class="punctuation">,</span> <span class="name">url</span>
+    <span class="name">timeout</span> <span class="operator">=</span> <span class="literal number integer">10</span>
+    <span class="name">url</span> <span class="operator">=</span> <span class="literal string single">'http://yahoo.com'</span>
+</pre>
+<p>We don't consider globals as total evil. But as they're not in trend, it's
+much better to use simple namespaces:</p>
+<pre class="code python literal-block">
+<span class="keyword namespace">from</span> <span class="name namespace">types</span> <span class="keyword namespace">import</span> <span class="name">SimpleNamespace</span>
+
+<span class="name">config</span> <span class="operator">=</span> <span class="name">SimpleNamespace</span><span class="punctuation">(</span><span class="name">timeout</span><span class="operator">=</span><span class="literal number integer">5</span><span class="punctuation">,</span> <span class="name">url</span><span class="operator">=</span><span class="literal string single">'http://google.com'</span><span class="punctuation">)</span>
+
+<span class="keyword">def</span> <span class="name function">load</span><span class="punctuation">():</span>
+    <span class="name">config</span><span class="operator">.</span><span class="name">timeout</span> <span class="operator">=</span> <span class="literal number integer">10</span>
+    <span class="name">config</span><span class="operator">.</span><span class="name">url</span> <span class="operator">=</span> <span class="literal string single">'http://yahoo.com'</span>
 </pre>
 </div>
 <div class="section" id="string-formatting">
@@ -536,10 +550,53 @@ and we use double quotes
 &quot;&quot;&quot;</span>
 </pre>
 </div>
+<div class="section" id="background-workers">
+<h1><a class="toc-backref" href="#id17">Background workers</a></h1>
+<p>Avoid starting threads directly, simple wrapper is always better:</p>
+<pre class="code python literal-block">
+<span class="comment single"># common wrapper</span>
+
+<span class="keyword">class</span> <span class="name class">BackgroundWorker</span><span class="punctuation">:</span>
+
+    <span class="keyword">def</span> <span class="name function magic">__init__</span><span class="punctuation">(</span><span class="name builtin pseudo">self</span><span class="punctuation">,</span> <span class="name">name</span><span class="operator">=</span><span class="name builtin pseudo">None</span><span class="punctuation">):</span>
+        <span class="name builtin pseudo">self</span><span class="operator">.</span><span class="name">__thread</span> <span class="operator">=</span> <span class="name builtin pseudo">None</span>
+        <span class="name builtin pseudo">self</span><span class="operator">.</span><span class="name">__active</span> <span class="operator">=</span> <span class="name builtin pseudo">False</span>
+        <span class="name builtin pseudo">self</span><span class="operator">.</span><span class="name">name</span> <span class="operator">=</span> <span class="name">name</span>
+
+    <span class="keyword">def</span> <span class="name function">start</span><span class="punctuation">(</span><span class="name builtin pseudo">self</span><span class="punctuation">,</span> <span class="operator">*</span><span class="name">args</span><span class="punctuation">,</span> <span class="operator">**</span><span class="name">kwargs</span><span class="punctuation">):</span>
+        <span class="keyword">if</span> <span class="operator word">not</span> <span class="punctuation">(</span><span class="name builtin pseudo">self</span><span class="operator">.</span><span class="name">__active</span> <span class="operator word">and</span> <span class="name builtin pseudo">self</span><span class="operator">.</span><span class="name">__thread</span> <span class="operator word">and</span> \
+                <span class="name builtin pseudo">self</span><span class="operator">.</span><span class="name">__thread</span><span class="operator">.</span><span class="name">isAlive</span><span class="punctuation">()):</span>
+            <span class="name builtin pseudo">self</span><span class="operator">.</span><span class="name">__thread</span> <span class="operator">=</span> <span class="name">threading</span><span class="operator">.</span><span class="name">Thread</span><span class="punctuation">(</span>
+                <span class="name">target</span><span class="operator">=</span><span class="name builtin pseudo">self</span><span class="operator">.</span><span class="name">run</span><span class="punctuation">,</span> <span class="name">name</span><span class="operator">=</span><span class="name builtin pseudo">self</span><span class="operator">.</span><span class="name">name</span><span class="punctuation">,</span> <span class="name">args</span><span class="operator">=</span><span class="name">args</span><span class="punctuation">,</span> <span class="name">kwargs</span><span class="operator">=</span><span class="name">kwargs</span><span class="punctuation">)</span>
+            <span class="name builtin pseudo">self</span><span class="operator">.</span><span class="name">__active</span> <span class="operator">=</span> <span class="name builtin pseudo">True</span>
+            <span class="name builtin pseudo">self</span><span class="operator">.</span><span class="name">__thread</span><span class="operator">.</span><span class="name">start</span><span class="punctuation">()</span>
+
+    <span class="keyword">def</span> <span class="name function">stop</span><span class="punctuation">(</span><span class="name builtin pseudo">self</span><span class="punctuation">,</span> <span class="name">wait</span><span class="operator">=</span><span class="name builtin pseudo">True</span><span class="punctuation">):</span>
+        <span class="keyword">if</span> <span class="name builtin pseudo">self</span><span class="operator">.</span><span class="name">__active</span> <span class="operator word">and</span> <span class="name builtin pseudo">self</span><span class="operator">.</span><span class="name">__thread</span> <span class="operator word">and</span> <span class="name builtin pseudo">self</span><span class="operator">.</span><span class="name">__thread</span><span class="operator">.</span><span class="name">isAlive</span><span class="punctuation">():</span>
+            <span class="name builtin pseudo">self</span><span class="operator">.</span><span class="name">__active</span> <span class="operator">=</span> <span class="name builtin pseudo">False</span>
+            <span class="keyword">if</span> <span class="name">wait</span><span class="punctuation">:</span>
+                <span class="name builtin pseudo">self</span><span class="operator">.</span><span class="name">__thread</span><span class="operator">.</span><span class="name">join</span><span class="punctuation">()</span>
+
+    <span class="keyword">def</span> <span class="name function">is_active</span><span class="punctuation">(</span><span class="name builtin pseudo">self</span><span class="punctuation">):</span>
+        <span class="keyword">return</span> <span class="name builtin pseudo">self</span><span class="operator">.</span><span class="name">__active</span>
+
+ <span class="comment single"># my worker</span>
+
+<span class="keyword">class</span> <span class="name class">MyWorker</span><span class="punctuation">(</span><span class="name">BackgroundWorker</span><span class="punctuation">):</span>
+
+    <span class="keyword">def</span> <span class="name function">run</span><span class="punctuation">():</span>
+        <span class="keyword">while</span> <span class="name builtin pseudo">self</span><span class="operator">.</span><span class="name">is_active</span><span class="punctuation">():</span>
+            <span class="comment single"># do a job</span>
+
+
+<span class="name">worker</span> <span class="operator">=</span> <span class="name">MyWorker</span><span class="punctuation">()</span>
+<span class="name">worker</span><span class="operator">.</span><span class="name">start</span><span class="punctuation">()</span>
+</pre>
+</div>
 <div class="section" id="cli-color-highlighting">
-<h1><a class="toc-backref" href="#id17">CLI color highlighting</a></h1>
+<h1><a class="toc-backref" href="#id18">CLI color highlighting</a></h1>
 <div class="section" id="usage">
-<h2><a class="toc-backref" href="#id18">Usage</a></h2>
+<h2><a class="toc-backref" href="#id19">Usage</a></h2>
 <p>Avoid using color functions directly, use wrappers instead:</p>
 <pre class="code python literal-block">
 <span class="comment single"># this is a bad example</span>
@@ -556,7 +613,7 @@ and we use double quotes
 </pre>
 </div>
 <div class="section" id="messages">
-<h2><a class="toc-backref" href="#id19">Messages</a></h2>
+<h2><a class="toc-backref" href="#id20">Messages</a></h2>
 <ul class="simple">
 <li><strong>DEBUG</strong> grey and bold</li>
 <li><strong>INFO</strong> regular</li>
@@ -572,14 +629,14 @@ and we use double quotes
     <div style="color: red; font-weight: bold;">CRITICAL MESSAGE</div>
 </div></div>
 <div class="section" id="tables">
-<h2><a class="toc-backref" href="#id20">Tables</a></h2>
+<h2><a class="toc-backref" href="#id21">Tables</a></h2>
 <div style="padding: 15px; background-color: black">
     <div style="color: #99CCFF">this is a header, blue and regular</div>
     <div style="color: #777777">---- this is separator, it's grey ----</div>
     <div style="color: #AAAAAA">TABLE CONTENT</div>
 </div></div>
 <div class="section" id="structures">
-<h2><a class="toc-backref" href="#id21">Structures</a></h2>
+<h2><a class="toc-backref" href="#id22">Structures</a></h2>
 <p>Both JSON and regular output:</p>
 <div style="padding: 15px; background-color: black">
 <div>
@@ -598,20 +655,20 @@ and we use double quotes
 </div></div>
 </div>
 <div class="section" id="versions">
-<h1><a class="toc-backref" href="#id22">Versions</a></h1>
+<h1><a class="toc-backref" href="#id23">Versions</a></h1>
 <p><strong>major.minor.subversion [alpha|beta]</strong> (<em>1.0.0 beta</em>)</p>
 </div>
 <div class="section" id="documentation">
-<h1><a class="toc-backref" href="#id23">Documentation</a></h1>
+<h1><a class="toc-backref" href="#id24">Documentation</a></h1>
 <div class="section" id="markup">
-<h2><a class="toc-backref" href="#id24">Markup</a></h2>
+<h2><a class="toc-backref" href="#id25">Markup</a></h2>
 <ul class="simple">
 <li><strong>rst (sphinx)</strong> primary</li>
 <li><strong>md</strong> for the simple texts, but keep it rst-compatible</li>
 </ul>
 </div>
 <div class="section" id="formatting">
-<h2><a class="toc-backref" href="#id25">Formatting</a></h2>
+<h2><a class="toc-backref" href="#id26">Formatting</a></h2>
 <p>For the lists of functions, commands, variables etc:</p>
 <ul class="simple">
 <li><strong>func1</strong> this is field one</li>
@@ -634,18 +691,18 @@ function <strong>func1</strong> with <strong>param1</strong> set to <em>False</e
 <em>func1(param1=False)</em></blockquote>
 </div>
 <div class="section" id="id1">
-<h2><a class="toc-backref" href="#id26">Max line width</a></h2>
+<h2><a class="toc-backref" href="#id27">Max line width</a></h2>
 <p><strong>80</strong> symbols, everywhere it is possible.</p>
 </div>
 </div>
 <div class="section" id="version-control">
-<h1><a class="toc-backref" href="#id27">Version control</a></h1>
+<h1><a class="toc-backref" href="#id28">Version control</a></h1>
 <div class="section" id="primary-vcs">
-<h2><a class="toc-backref" href="#id28">Primary VCS</a></h2>
+<h2><a class="toc-backref" href="#id29">Primary VCS</a></h2>
 <p>git</p>
 </div>
 <div class="section" id="branches">
-<h2><a class="toc-backref" href="#id29">Branches</a></h2>
+<h2><a class="toc-backref" href="#id30">Branches</a></h2>
 <p><strong>master</strong> current working branch - unstable code, but at least possible to be
 executed</p>
 <p><strong>&lt;version&gt;</strong>  i.e. <em>1.0.0</em> - stable branch</p>
@@ -653,7 +710,7 @@ executed</p>
 keep it lowercase.</p>
 </div>
 <div class="section" id="commits">
-<h2><a class="toc-backref" href="#id30">Commits</a></h2>
+<h2><a class="toc-backref" href="#id31">Commits</a></h2>
 <p>Short comments like <em>fixes</em>, <em>formatting</em> are allowed, but only for the short
 and clear code or documentation changes:</p>
 <pre class="code python literal-block">
