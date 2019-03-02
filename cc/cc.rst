@@ -239,6 +239,40 @@ Avoid starting threads directly, simple wrapper is always better:
     worker = MyWorker()
     worker.start()
 
+Development of background workers is preffered with
+https://github.com/alttch/pyaltt/ library. Example:
+
+.. code-block:: python
+
+    from pyaltt import background_worker
+
+    @background_worker
+    def myworker(**kwargs):
+        print('I\'m a worker ' + kwargs.get('worker_name'))
+
+    myworker.start()
+
+Working with function collections
+---------------------------------
+
+https://github.com/alttch/pyaltt/ library example, function collection to shut
+down the project:
+
+.. code-block:: python
+
+    from pyaltt import FunctionCollecton
+    
+    shutdown = FunctionCollecton()
+    
+    @shutdown
+    def f1():
+        print('Stopping stuff #1')
+    
+    @funcs
+    def f2():
+        print('Stopping stuff #2')
+    
+    shutdown.run()
 
 Initializing dictionary values
 ------------------------------
