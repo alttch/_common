@@ -25,7 +25,7 @@ Function params
 Classes
 -------
 
-First letters of the words - uppercase, without separation: *MyClass*
+CamelCase, without separation: *MyClass*
 
 Max line width
 --------------
@@ -62,12 +62,17 @@ Single line code, multi line code
 Imports
 -------
 
-One per line
+Module imports - one per line
 
 .. code-block:: python
 
     import os
-    from time import sleep
+
+Object and function imports - multiple allowed
+
+.. code-block:: python
+
+    from time import sleep, time
 
 Overriding internal methods
 ---------------------------
@@ -115,15 +120,28 @@ much better to use simple namespaces:
 
     config = SimpleNamespace(timeout=5, url='http://google.com')
 
+    _d = SimpleNamespace(loaded=False)
+
     def load():
         config.timeout = 10
         config.url = 'http://yahoo.com'
+        _d.loaded = True
 
 String formatting
 -----------------
 
-Both old style ((*'s: %s' % s*) and new style (*'s: {}'.format(s)*) are allowed,
-new style is preferred.
+f-string is the most preferred way. "format" is allowed e.g. for complex
+conditions, but avoid named formatting (it's slow).
+
+.. code-block:: python
+
+    a = f'{b} {c} {d}'
+
+    # good but
+    z = 'b is {}'.format('zero' if b == 0 else 'non-zero')
+    # better
+    z = f'b is {"zero" if b == 0 else "non-zero"}'
+    # but always keep it readable, unless the speed is really important
 
 File names
 ----------
@@ -240,11 +258,11 @@ Avoid starting threads directly, simple wrapper is always better:
     worker.start()
 
 Development of background workers is preffered with
-https://github.com/alttch/pyaltt/ library. Example:
+https://github.com/alttch/neotasker/ library. Example:
 
 .. code-block:: python
 
-    from pyaltt import background_worker
+    from neotasker import background_worker
 
     @background_worker
     def myworker(**kwargs):
@@ -255,12 +273,12 @@ https://github.com/alttch/pyaltt/ library. Example:
 Working with function collections
 ---------------------------------
 
-https://github.com/alttch/pyaltt/ library example, function collection to shut
-down the project:
+https://github.com/alttch/neotasker/ library example, function collection to
+shut down the project:
 
 .. code-block:: python
 
-    from pyaltt import FunctionCollecton
+    from neotasker import FunctionCollecton
     
     shutdown = FunctionCollecton()
     
@@ -300,13 +318,85 @@ Good example:
     config.setdefault('structure', {})['a'] = 1
     config.setdefault('items', []).append('item1')
 
+CLI tables
+----------
+
+https://github.com/alttch/rapidtables
+
+Configs
+-------
+
+YAML is preferred. Don't parse YAML directly, use
+https://github.com/alttch/pyaltt2
+
+Web applications
+----------------
+
+Engine
+~~~~~~
+
+Flask is preferred. REST wrapped for Swagger auto-docs are fine (e.g.
+https://github.com/python-restx/flask-restx)
+
+WSGI
+~~~~
+
+gunicorn is preferred. Don't use it directly, use
+https://github.com/alttch/pyaltt2 app module.
+
+Databases
+---------
+
+SQL server
+~~~~~~~~~~
+
+PosgreSQL is preferred. Additional support of MySQL and SQLite is highly
+welcome.
+
+API
+~~~
+
+Don't use SQLAlchemy directly, use https://github.com/alttch/pyaltt2 db module.
+
+SQL queries
+~~~~~~~~~~~
+
+Don't keep SQL queries in Python code. Put them to "resources" dir, use
+https://github.com/alttch/pyaltt2/tree/master/pyaltt2 res module.
+
+JSON
+----
+
+Engine
+~~~~~~
+
+https://pypi.org/project/python-rapidjson/ is preferred. Use
+https://github.com/alttch/pyaltt2 JSON auto-wrapper.
+
+Validation
+~~~~~~~~~~
+
+Always use https://pypi.org/project/jsonschema/ wherever it's possible.
+
+Sending mail
+------------
+
+https://github.com/alttch/pyaltt2/tree/master/pyaltt2 mail module is preferred.
+
+Cryptography
+------------
+
+https://github.com/alttch/pyaltt2/tree/master/pyaltt2 crypto (Rioja) is
+preferred for AES.
+
 CLI color highlighting
 ----------------------
 
 Usage
 ~~~~~
 
-Avoid using color functions directly, use wrappers instead:
+Avoid using color functions directly, use wrappers instead. Recommended to
+use: https://github.com/alttch/neotermcolor
 
 .. code-block:: python
 
@@ -381,6 +471,12 @@ Versions
 --------
 
 **major.minor.subversion [alpha|beta]** (*1.0.0 beta*)
+
+Each project should have version at least in the primary file:
+
+.. code:: python
+
+    __version__ = '1.2.3'
 
 Documentation
 -------------
