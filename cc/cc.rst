@@ -329,6 +329,13 @@ Configs
 YAML is preferred. Don't parse YAML directly, use
 https://github.com/alttch/pyaltt2
 
+Documentation
+-------------
+
+Simple docs: Markdown is preferred
+
+Complex docs: Sphinx/RST is preferred
+
 Web applications
 ----------------
 
